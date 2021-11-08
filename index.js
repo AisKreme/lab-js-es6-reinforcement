@@ -123,11 +123,19 @@ genderCount(data);
 // ***************************************************************************
 // Bonus - Iteration 6
 // ***************************************************************************
-
 const promo20 = (users) => {
   for (let key of users) {
+    let balance = key.balance.replace(/,/g, "");
+    balance = balance.substring(1);
+    Number(balance);
+    if (balance > 20000) {
+      console.log(
+        `Dear ${key.firstName}, since your balance is ${key.balance}, you are eligible to apply for this awesome credit card.`
+      );
+    }
   }
 };
+promo20(usersArray);
 
 // expected output:
 // Dear Howard, since your balance is $21,307.75, you are eligible to apply for this awesome credit card.
@@ -138,10 +146,13 @@ const promo20 = (users) => {
 // ***************************************************************************
 
 const addActive = (users) => {
-  // Your code goes here ...
+  for (let key of users) {
+    key.isActive = true;
+  }
+  console.log(users);
 };
-
 addActive(usersArray);
+
 // expected output:
 // [
 //    { firstName: 'Kirby',
